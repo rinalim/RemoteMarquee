@@ -16,7 +16,7 @@ cp runcommand-onend.sh /opt/retropie/configs/all/
 #sed -i '1i\\/usr/bin/python /home/pi/RemoteMarquee/RemoteMarquee.py &' /opt/retropie/configs/all/autostart.sh
 apt-get install -y imagemagick sysstat libjpeg8-dev
 git clone https://github.com/jacksonliam/mjpg-streamer.git
-cd mjpg-streamer-experimental
+cd mjpg-streamer/mjpg-streamer-experimental
 make
 make install
 chgrp -R -v pi /home/pi/RemoteMarquee
