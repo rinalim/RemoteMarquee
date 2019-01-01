@@ -2,7 +2,7 @@
 # Install      :
 # cd /home/pi
 # git clone https://github.com/rinalim/RemoteMarquee.git
-# cd /home/pi/RemoteMarquee/
+# cd RemoteMarquee
 # chmod 755 install.sh
 # sudo ./install.sh
 #
