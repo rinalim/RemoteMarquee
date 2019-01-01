@@ -4,7 +4,7 @@ import os
 from subprocess import *
 from time import *
 
-FONT_SIZE = 10
+FONT_SIZE = 12
 
 def run_cmd(cmd):
 # runs whatever in the cmd variable
@@ -58,7 +58,7 @@ def main():
             words = lines[6].split()
             cpu_load = "{0:.2f}".format(100 - float(words[5]))
             log = 'CPU load = ' + cpu_load + ' Temperature = ' + get_cpu_temp() + ' '
-            run_cmd("convert -background black -fill white -pointsize " + str(FONT_SIZE) + " label:'" + log + "' /tmp/log.png")
+            run_cmd("convert -background black -fill white -font FreeSans -pointsize " + str(FONT_SIZE) + " label:'" + log + "' /tmp/log.png")
             run_cmd("composite -gravity Southeast /tmp/log.png '/home/pi/RemoteMarquee/marquee/" + romfile + ".jpg' /home/pi/RemoteMarquee/watching/result.jpg")
             #sleep(0)
 
