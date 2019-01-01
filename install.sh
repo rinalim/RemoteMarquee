@@ -19,6 +19,7 @@ echo 'echo "$1 $rom_name" > /tmp/remotemarquee.log' >> /opt/retropie/configs/all
 sudo sed -i '/remotemarquee/d' /opt/retropie/configs/all/runcommand-onend.sh
 echo 'echo "maintitle" > /tmp/remotemarquee.log' >> /opt/retropie/configs/all/runcommand-onend.sh
 
+sudo sed -i '/RemoteMarquee/d' /opt/retropie/configs/all/autostart.sh 
 sed -i '1i\\/bin/sh /home/pi/RemoteMarquee/stream.sh' /opt/retropie/configs/all/autostart.sh
 sed -i '1i\\/usr/bin/python /home/pi/RemoteMarquee/RemoteMarquee.py &' /opt/retropie/configs/all/autostart.sh
 
