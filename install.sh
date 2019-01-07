@@ -35,7 +35,7 @@ make install
 chgrp -R -v pi /home/pi/RemoteMarquee
 chown -R -v pi /home/pi/RemoteMarquee
 
-cd client
+cd /home/pi/RemoteMarquee/client
 sudo chmod 755 *sh
 cd driver-waveshare
 sudo chmod 755 *sh
