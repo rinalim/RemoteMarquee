@@ -35,6 +35,11 @@ make install
 chgrp -R -v pi /home/pi/RemoteMarquee
 chown -R -v pi /home/pi/RemoteMarquee
 
+cd client
+sudo chmod 755 *sh
+cd driver-waveshare
+sudo chmod 755 *sh
+
 echo "Setup Completed. Reboot after 3 Seconds."
 sleep 3
 reboot
