@@ -6,6 +6,6 @@ Display marquee images by mjpg streaming
 cd /home/pi
 git clone https://github.com/rinalim/RemoteMarquee.git
 cd RemoteMarquee
-chmod 755 install.sh
+chmod 755 *sh
 sudo ./install.sh
 </code></pre>
