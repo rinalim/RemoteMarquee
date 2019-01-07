@@ -5,7 +5,7 @@ from subprocess import *
 from time import *
 from datetime import datetime
 
-USER = 'RiNa@RaspigamerCafe'
+USER = 'MyName@RaspigamerCafe'
 INTERVAL = 1
 FONT1_SIZE = 14
 FONT2_SIZE = 14
