@@ -5,7 +5,7 @@ from subprocess import *
 from time import *
 from datetime import datetime
 
-USER = 'RiNa@RaspigamerCafe'
+USER = 'MyName@RaspigamerCafe'
 INTERVAL = 1
 FONT1_SIZE = 0
 FONT2_SIZE = 14
@@ -56,11 +56,17 @@ def main():
             line = f.readline()
             words = line.split()
             f.close()
-            if words[0] == "maintitle":
+            # For Advmenu
+            adv_romfile = run_cmd("ps -aux | grep advmame/bin/advmame | grep -v 'grep' | awk '{print $12}'")
+            if words[0] == "maintitle" and len(adv_romfile) <= 1: 
                 romfile = "maintitle"
             else:
-                system = words[0]
-                romfile = words[1]
+			    if len(adv_romfile) > 1 :
+                    system = "mame-advmame"
+                    romfile = adv_romfile.replace("\n","")
+                else:
+                    system = words[0]
+                    romfile = words[1]
                 if os.path.isfile("/home/pi/RemoteMarquee/marquee/" + romfile  + ".jpg") == False:
                     png_path1 = "/home/pi/RetroPie/roms/arcade/marquee/" + romfile  + ".png"
                     png_path2 = "/home/pi/RetroPie/roms/" + system + "/marquee/" + romfile  + ".png"
@@ -74,15 +80,15 @@ def main():
                         romfile = "maintitle"
 
         if os.path.isfile('/tmp/marquee-mode'):
-            f = open('/tmp/marquee-mode','r')
+            f = open('/tmp/marquee-mode', 'r')
             mode = f.readline().replace('\n','')
             f.close()
         else:
             mode = '1'
-            
-        if mode == '2' and os.path.isfile('/home/pi/RemoteMarquee/marquee/" + romfile + "-ctrl.jpg'):
+
+        if mode == '2' and os.path.isfile('/home/pi/RemoteMarquee/marquee/' + romfile + '-ctrl.jpg'):
             run_cmd("cp '/home/pi/RemoteMarquee/marquee/" + romfile + "-ctrl.jpg' /tmp/result.jpg")
-        else:              
+        else:
             run_cmd("cp '/home/pi/RemoteMarquee/marquee/" + romfile + ".jpg' /tmp/result.jpg")
 
         if FONT1_SIZE > 0:
@@ -118,3 +124,4 @@ if __name__ == "__main__":
     # Catch the remaining exit errors
     except:
         sys.exit(0)
+	
