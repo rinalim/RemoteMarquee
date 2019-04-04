@@ -1,8 +1,12 @@
 import evdev
-from evdev import InputDevice, categorize, ecodes
+from evdev import InputDevice, categorize, ecodes, list_devices
 
-device = evdev.InputDevice('/dev/input/event3')
-print device
+devices = map(InputDevice, list_devices())
+device=""
+for dev in devices:
+    if "Touchscreen" in dev.name:
+        device = dev.fn
+print device                  
 
 for event in device.read_loop():
     if event.type == ecodes.EV_KEY:
