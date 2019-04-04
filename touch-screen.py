@@ -5,7 +5,7 @@ devices = map(InputDevice, list_devices())
 device=""
 for dev in devices:
     if "Touchscreen" in dev.name:
-        device = dev.fn
+        device = dev
 print device                  
 
 if device != "":
