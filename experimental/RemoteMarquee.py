@@ -61,7 +61,7 @@ def main():
             if words[0] == "maintitle" and len(adv_romfile) <= 1: 
                 romfile = "maintitle"
             else:
-			    if len(adv_romfile) > 1 :
+                if len(adv_romfile) > 1 :
                     system = "mame-advmame"
                     romfile = adv_romfile.replace("\n","")
                 else:
