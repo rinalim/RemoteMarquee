@@ -7,7 +7,7 @@ from datetime import datetime
 
 USER = 'RiNa@RaspigamerCafe'
 INTERVAL = 1
-FONT1_SIZE = 14
+FONT1_SIZE = 0
 FONT2_SIZE = 14
 
 def run_cmd(cmd):
@@ -44,6 +44,7 @@ def main():
         delay = delay - 1
 
     run_cmd('echo "maintitle" > /tmp/remotemarquee.log')
+    run_cmd('echo "1" > /tmp/marquee-mode')
     while True:
         romfile = "maintitle"
         try:
@@ -72,7 +73,17 @@ def main():
                     else:
                         romfile = "maintitle"
 
-        run_cmd("cp '/home/pi/RemoteMarquee/marquee/" + romfile + ".jpg' /tmp/result.jpg")
+        if os.path.isfile('/tmp/marquee-mode'):
+            f = open('/tmp/marquee-mode','r')
+            mode = f.readline().replace('\n','')
+            f.close()
+        else:
+            mode = '1'
+            
+        if mode == '2' and os.path.isfile('/home/pi/RemoteMarquee/marquee/" + romfile + "-ctrl.jpg'):
+            run_cmd("cp '/home/pi/RemoteMarquee/marquee/" + romfile + "-ctrl.jpg' /tmp/result.jpg")
+        else:              
+            run_cmd("cp '/home/pi/RemoteMarquee/marquee/" + romfile + ".jpg' /tmp/result.jpg")
 
         if FONT1_SIZE > 0:
             date =  datetime.now().strftime( "%b %d %H:%M" )
