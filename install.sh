@@ -22,6 +22,7 @@ echo 'echo "maintitle" > /tmp/remotemarquee.log' >> /opt/retropie/configs/all/ru
 sudo sed -i '/RemoteMarquee/d' /opt/retropie/configs/all/autostart.sh 
 sudo sed -i '1i\\/bin/sh /home/pi/RemoteMarquee/stream.sh' /opt/retropie/configs/all/autostart.sh
 sudo sed -i '1i\\/usr/bin/python /home/pi/RemoteMarquee/RemoteMarquee.py &' /opt/retropie/configs/all/autostart.sh
+sudo sed -i '1i\\/usr/bin/python /home/pi/RemoteMarquee/touch-screen.py &' /opt/retropie/configs/all/autostart.sh
 
 sudo apt-get update
 sudo apt-get install -y imagemagick sysstat libjpeg8-dev
